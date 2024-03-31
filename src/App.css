@@ -1,0 +1,22 @@
+
+
+.product_list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.carousel_product{
+  height: 500px;
+}
+.dropdown-menu{
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.text-white{
+  color: #ffffff !important;
+}
+.nav-link{
+  color: white !important;
+}
