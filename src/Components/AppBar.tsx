@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 type NavBarProps = {
     categories?:string[];
     onChangeCategory?:(e:string | undefined)=>void;
-    isCategory:boolean;
+    isCategory?:boolean;
 }
 function AppBar({categories=[],onChangeCategory=()=>{},isCategory=true}:NavBarProps) {
   return (

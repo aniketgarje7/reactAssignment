@@ -20,7 +20,9 @@ const ProductPage = () => {
   }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <div>
+      <AppBar isCategory={false}/>
+    </div>;
   }
  
   return (
