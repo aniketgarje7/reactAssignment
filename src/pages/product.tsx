@@ -1,40 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Card, Carousel, Container, ListGroup, Navbar } from "react-bootstrap";
+import { Card, Carousel, Container, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Product } from "../Components/Card";
 import AppBar from "../Components/AppBar";
+import { fetchProduct } from "../api/fetchProduct";
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
-  const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
 
   const [product, setProduct] = useState<Product | null>(null);
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch(`https://dummyjson.com/products/${id}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch product");
-        }
-        const data: Product = await response.json();
-        setProduct(data);
-      } catch (error) {
-        console.error("Error fetching product:", error);
+    if(!id)return;
+    fetchProduct(Number(id)).then((item)=>{
+      if(item){
+         setProduct(item);
       }
-    };
-    fetchProduct();
+    })
     return () => setProduct(null);
   }, [id]);
 
   if (!product) {
     return <div>Loading...</div>;
   }
-  const onChangeCategory = (e: string | undefined) => {
-    setSelectedCategory(e);
-  };
+ 
   return (
      <div>
-      <AppBar categories={[]}  onChangeCategory={onChangeCategory} />
+      <AppBar categories={[]}  isCategory={false} />
       <Container>
       <Card className="mt-4 rounded">
         <Carousel className="carousel_product" style={{ height: "50vh" }} data-bs-theme='dark'>

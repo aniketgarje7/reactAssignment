@@ -31,10 +31,10 @@ const { id, title, description, price, thumbnail,brand } = product;
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item>
-          <span>price:</span>
+          <span>Price:</span>
           ${price}</ListGroup.Item>
         <ListGroup.Item>
-          <span>brand:</span>
+          <span>Brand:</span>
           {brand}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
